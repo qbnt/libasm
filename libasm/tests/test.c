@@ -5,14 +5,16 @@
 #include "libasm.h"
 
 int main() {
-    const char *str = "Hello 42!";
-	char dest[200] = "";
 
 	printf("\n------------------strlen------------------\n");
+    const char *str = "Hello 42!";
     printf("ft_strlen(\"%s\") = %zu\n", str, ft_strlen(str));
 	printf("strlen(\"%s\") = %zu\n", str, strlen(str));
 
+
+
 	printf("\n------------------strcpy------------------\n");
+	char dest[200] = "";
 	printf("dest avant: %s\n", dest);
 	ft_strcpy(dest, str);
 	printf("dest apres: %s\n", dest);
@@ -24,6 +26,8 @@ int main() {
 		printf("✅ ft_strcpy fonctionne comme strcpy\n");
 	else
 		printf("❌ ft_strcpy ne copie pas correctement\n");
+
+
 
 	printf("\n------------------strcmp------------------\n");
 	const char *s1 = "42";
@@ -40,6 +44,8 @@ int main() {
 	printf("ft_strcmp(\"%s\", \"%s\") = %d\n", s1, s4, ft_strcmp(s1, s4));
 	printf("strcmp(\"%s\", \"%s\") = %d\n", s1, s4, strcmp(s1, s4));
 
+
+
 	printf("\n------------------write------------------\n");
 	const char *msg = "Hello from ft_write!\n";
 	ssize_t bytes_written_ft = ft_write(1, msg, strlen(msg));
@@ -52,6 +58,8 @@ int main() {
 		printf("✅ ft_write fonctionne comme write\n");
 	else
 		printf("❌ ft_write diffère de write\n");
+
+
 
 	printf("\n------------------write error (fd = -1)------------------\n");
 	const char *msg_err = "Erreur volontaire\n";
@@ -69,6 +77,7 @@ int main() {
 		printf("❌ Mauvaise gestion d'erreur pour ft_write\n");
 
 
+
 	printf("\n------------------read------------------\n");
 	char buffer[100];
 	printf("Tape quelque chose (max 100 caractères) : ");
@@ -76,6 +85,8 @@ int main() {
 	ssize_t bytes_read_ft = ft_read(0, buffer, sizeof(buffer) - 1);
 	buffer[bytes_read_ft > 0 ? bytes_read_ft : 0] = '\0';
 	printf("ft_read a lu %zd octets: %s\n", bytes_read_ft, buffer);
+
+
 
 	printf("\n------------------read error (fd = -1)------------------\n");
 	errno = 0;
@@ -91,7 +102,9 @@ int main() {
 	else
 		printf("❌ Mauvaise gestion d'erreur pour ft_read\n");
 
-		printf("\n------------------strdup------------------\n");
+
+
+	printf("\n------------------strdup------------------\n");
 	const char *src = "Libasm rocks!";
 	char *dup_ft = ft_strdup(src);
 	char *dup_sys = strdup(src);
