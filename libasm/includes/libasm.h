@@ -6,7 +6,7 @@
 /*   By: qbanet <qbanet@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:25:36 by qbanet            #+#    #+#             */
-/*   Updated: 2025/03/21 15:29:09 by qbanet           ###   ########.fr       */
+/*   Updated: 2025/03/24 15:34:58 by qbanet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 	#define _LIBASM_H
 
 	# include <stdlib.h>
+	# include <unistd.h>
 
 	// Mendatory
-	size_t	ft_strlen(char *str);
+	size_t	ft_strlen(const char *str);
 	int		ft_strcmp(const char *s1, const char *s2);
 	char	*ft_strcpy(char *dst, const char *src);
 	char	*ft_strdup(const char *s);

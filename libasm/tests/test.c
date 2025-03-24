@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-
-size_t	ft_strlen(const char *s);
-char*	ft_strcpy(char* dst, const char* src);
-int		ft_strcmp(const char *s1, const char *s2);
-ssize_t	ft_write(int fd, const void *buf, size_t count);
+#include <errno.h>
+#include "libasm.h"
 
 int main() {
     const char *str = "Hello 42!";
@@ -56,5 +53,41 @@ int main() {
 	else
 		printf("❌ ft_write diffère de write\n");
 
-    return 0;
+	printf("\n------------------write error (fd = -1)------------------\n");
+	const char *msg_err = "Erreur volontaire\n";
+	errno = 0;
+	ssize_t ft_write_err = ft_write(-1, msg_err, strlen(msg_err));
+	int ft_write_errno = errno;
+	errno = 0;
+	ssize_t sys_write_err = write(-1, msg_err, strlen(msg_err));
+	int sys_write_errno = errno;
+	printf("ft_write retour: %zd, errno: %d\n", ft_write_err, ft_write_errno);
+	printf("write retour: %zd, errno: %d\n", sys_write_err, sys_write_errno);
+	if (ft_write_err == -1 && ft_write_errno == sys_write_errno)
+		printf("✅ Gestion d'erreur correcte pour ft_write\n");
+	else
+		printf("❌ Mauvaise gestion d'erreur pour ft_write\n");
+
+		printf("\n------------------read------------------\n");
+	char buffer[100];
+	printf("Tape quelque chose (max 100 caractères) : ");
+	ssize_t bytes_read_ft = ft_read(0, buffer, sizeof(buffer) - 1);
+	buffer[bytes_read_ft > 0 ? bytes_read_ft : 0] = '\0';
+	printf("ft_read a lu %zd octets: %s\n", bytes_read_ft, buffer);
+
+	printf("\n------------------read error (fd = -1)------------------\n");
+	errno = 0;
+	ssize_t ft_read_err = ft_read(-1, buffer, 10);
+	int ft_errno = errno;
+	errno = 0;
+	ssize_t sys_read_err = read(-1, buffer, 10);
+	int sys_errno = errno;
+	printf("ft_read retour: %zd, errno: %d\n", ft_read_err, ft_errno);
+	printf("read retour: %zd, errno: %d\n", sys_read_err, sys_errno);
+	if (ft_read_err == -1 && ft_errno == sys_errno)
+		printf("✅ Gestion d'erreur correcte pour ft_read\n");
+	else
+		printf("❌ Mauvaise gestion d'erreur pour ft_read\n");
+
+	return 0;
 }
