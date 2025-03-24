@@ -13,7 +13,7 @@ TEST_DIR    = tests
 
 # Liste des sources en assembleur
 ASM_SRCS    = $(SRC_DIR)/ft_strcmp.s $(SRC_DIR)/ft_write.s $(SRC_DIR)/ft_read.s\
-            	$(SRC_DIR)/ft_strcpy.s $(SRC_DIR)/ft_strlen.s
+            	$(SRC_DIR)/ft_strcpy.s $(SRC_DIR)/ft_strlen.s $(SRC_DIR)/ft_strdup.s
 
 # Transformation des fichiers .s en .o dans le dossier objs
 OBJS        = $(patsubst $(SRC_DIR)/%.s, $(OBJ_DIR)/%.o, $(ASM_SRCS))

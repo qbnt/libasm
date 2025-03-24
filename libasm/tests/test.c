@@ -68,9 +68,11 @@ int main() {
 	else
 		printf("❌ Mauvaise gestion d'erreur pour ft_write\n");
 
-		printf("\n------------------read------------------\n");
+
+	printf("\n------------------read------------------\n");
 	char buffer[100];
 	printf("Tape quelque chose (max 100 caractères) : ");
+	fflush(stdout);
 	ssize_t bytes_read_ft = ft_read(0, buffer, sizeof(buffer) - 1);
 	buffer[bytes_read_ft > 0 ? bytes_read_ft : 0] = '\0';
 	printf("ft_read a lu %zd octets: %s\n", bytes_read_ft, buffer);
@@ -88,6 +90,22 @@ int main() {
 		printf("✅ Gestion d'erreur correcte pour ft_read\n");
 	else
 		printf("❌ Mauvaise gestion d'erreur pour ft_read\n");
+
+		printf("\n------------------strdup------------------\n");
+	const char *src = "Libasm rocks!";
+	char *dup_ft = ft_strdup(src);
+	char *dup_sys = strdup(src);
+
+	printf("ft_strdup: %s\n", dup_ft);
+	printf("strdup   : %s\n", dup_sys);
+
+	if (strcmp(dup_ft, dup_sys) == 0)
+		printf("✅ ft_strdup fonctionne comme strdup\n");
+	else
+		printf("❌ ft_strdup ne renvoie pas une copie correcte\n");
+
+	free(dup_ft);
+	free(dup_sys);
 
 	return 0;
 }
