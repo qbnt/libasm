@@ -29,6 +29,7 @@ $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s includes/libasm.h | $(OBJ_DIR)
+	@echo "Assemblage de $<"
 	$(ASM) $(ASMFLAGS) $< -o $@
 
 $(OBJ_DIR):
