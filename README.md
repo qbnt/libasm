@@ -15,14 +15,6 @@ The goal of this project is to re-implement a few standard C library functions i
 - `ft_read`     – Read from a file descriptor
 - `ft_strdup`   – Duplicate a string
 
-## Bonus Functions (if applicable)
-
-You may also implement additional functions to go further:
-
-- `ft_atoi`     – Convert a string to an integer
-- `ft_strchr`   – Locate a character in a string
-- `ft_strrchr`  – Locate last occurrence of a character in a string
-
 ## Requirements
 
 - NASM (Netwide Assembler)
@@ -33,16 +25,13 @@ You may also implement additional functions to go further:
 To compile the assembly functions:
 
 ```bash
-nasm -f elf64 ft_strlen.s
-nasm -f elf64 ft_strcpy.s
-# etc.
+make
 ```
 
 To test with a C file:
 
 ```bash
-gcc -no-pie main.c ft_strlen.o ft_strcpy.o -o libasm_test
-./libasm_test
+make test
 ```
 
 ## Testing
