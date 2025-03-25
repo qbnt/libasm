@@ -41,9 +41,6 @@ You can write your own C test files or use a testing framework such as:
 - [libasm-tester](https://github.com/jtoty/LibasmTester)
 - [libasm_unit_test](https://github.com/0x050f/libasm_unit_test)
 
-## Author
-
-Quentin Banet
 
 ## License
 
